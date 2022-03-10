@@ -6,6 +6,9 @@ using System.Linq;
 using System;
 using OpenCvSharp;
 using UnityEngine.UI;
+using UnityEngine.XR.ARSubsystems;
+
+using UnityEngine.XR.ARFoundation;
 public class Prediction : MonoBehaviour
 {
     public Texture2D texture;
@@ -16,6 +19,7 @@ public class Prediction : MonoBehaviour
     public Text text1;
     public Text text2;
     public Text text3;
+    public Text text4;
     [System.Serializable]
     public struct Predictions
     {
@@ -43,43 +47,21 @@ public class Prediction : MonoBehaviour
           try
           {
               _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.CPU);
+            print( $"{WorkerFactory.Device.CPU}");
+            text4.text = $"{WorkerFactory.Device.CPU}";
 
-
-          }
+        }
           catch (System.Exception)
           {
               print("¿£Áø¸ê¸Á");
+            text4.text = "¿£Áø¸ê¸Á";
               _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.GPU);
           }
         
         predictions = new Predictions();
 
     }
-    public static List<List<float>> GetCandidate(float[] pred, int[] pred_dim, float pred_thresh = 0.25f)
-    {
-        List<List<float>> candidate = new List<List<float>>();
-        for (int batch = 0; batch < pred_dim[0]; batch++)
-        {
-            for (int cand = 0; cand < pred_dim[1]; cand++)
-            {
-                int score = 4;  // objectness score
-                int idx1 = (batch * pred_dim[1] * pred_dim[2]) + cand * pred_dim[2];
-                int idx2 = idx1 + score;
-                var value = pred[idx2];
-                if (value > pred_thresh)
-                {
-                    List<float> tmp_value = new List<float>();
-                    for (int i = 0; i < pred_dim[2]; i++)
-                    {
-                        int sub_idx = idx1 + i;
-                        tmp_value.Add(pred[sub_idx]);
-                    }
-                    candidate.Add(tmp_value);
-                }
-            }
-        }
-        return candidate;
-    }
+    
     void Update() {
 
       
@@ -87,30 +69,92 @@ public class Prediction : MonoBehaviour
     }
 
     // Update is called once per frame
+    private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
+    {
+        Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
+        float incX = (1.0f / (float)targetWidth);
+        float incY = (1.0f / (float)targetHeight);
+        for (int i = 0; i < result.height; ++i)
+        {
+            for (int j = 0; j < result.width; ++j)
+            {
+                Color newColor = source.GetPixelBilinear((float)j / (float)result.width, (float)i / (float)result.height);
+                result.SetPixel(j, i, newColor);
+            }
+        }
+        result.Apply();
+        return result;
+    }
     public void GETS()
         {
         
           //  if (Input.GetKeyDown(KeyCode.Space))
           //  {
-            print("haha");
-            //texture = Projection.jjj;
-            //RenderTexture render = CameraM.GetComponent<Camera>().targetTexture;
-            //print(render);
-            //texture = new Texture2D(render.width, render.height);
-            texture=GetTextureFromCamera(CameraM.GetComponent<Camera>());
+            print("GETS!");
+        //texture = Projection.jjj;
+        //RenderTexture render = CameraM.GetComponent<Camera>().targetTexture;
+        //print(render);
+        //texture = new Texture2D(render.width, render.height);
+        try
+        {
+            // texture = GetTextureFromCamera(CameraM.GetComponent<Camera>());
+            ///
+
+            texture = ScreenCapture.CaptureScreenshotAsTexture();
+            try
+            {
+                //  Mat frame = OpenCvSharp.Unity.TextureToMat(texture);
+
+                //Cv2.Resize(frame, frame, new Size(640, 640));
+                //texture = OpenCvSharp.Unity.MatToTexture(frame);
+                texture= ScaleTexture(texture, 640, 640);
+                print(texture);
+                text4.text = $"º¯È¯¼º°ø";
+            }
+            catch (Exception ex)
+            {
+                
+                text4.text = $"{ex.ToString()}";
+            } 
+            ///
+
+
+        //    text4.text = $"ÃÔ¿µ¼º°ø";
+        }
+        catch (Exception)
+        {
+            text4.text = $"ÃÔ¿µ½ÇÆÐ";
+
+        }    
+        
+       // texture=GetTextureFromCamera(CameraM.GetComponent<Camera>());
             var inputX = new Tensor(texture, 3);
                 Tensor OutputY = _engine.Execute(inputX).PeekOutput();
                 inputX.Dispose();
 
             /////// ¼±ÅÃ°ú ÁýÁß
-            var x0 = OutputY[0,0,0,0];
-            var x1 = OutputY[0,0,1,0];
-            var x2 = OutputY[0,0,2,0];
-            var x3 = OutputY[0,0,3,0];
-            var x4 = OutputY[0,0,4,0];
-            var x5 = OutputY[0,0,5,0];
-            var x6 = OutputY[0,0,6,0];
-            print("À§Ä¡ÁÂÇ¥ 1: "+ x0);
+        
+
+
+        float temp0=0;
+        int indexofob = -1;
+        for (int i = 0; i < 25200; i++)
+        {
+            float temp1 = (float)OutputY[0, 0, 4, i];
+            if (temp0 < temp1)
+            { temp0 = temp1;
+                indexofob = i;
+            }
+        }
+        var x0 = OutputY[0, 0, 0, indexofob];
+        var x1 = OutputY[0, 0, 1, indexofob];
+        var x2 = OutputY[0, 0, 2, indexofob];
+        var x3 = OutputY[0, 0, 3, indexofob];
+        var x4 = OutputY[0, 0, 4, indexofob];
+        var x5 = OutputY[0, 0, 5, indexofob];
+        var x6 = OutputY[0, 0, 6, indexofob];
+
+        print("À§Ä¡ÁÂÇ¥ 1: "+ x0);
             print("À§Ä¡ÁÂÇ¥ 2: "+ x1);
             print("À§Ä¡ÁÂÇ¥ 3: "+ x2);
             print("À§Ä¡ÁÂÇ¥ 4: "+ x3);
@@ -118,10 +162,11 @@ public class Prediction : MonoBehaviour
             print("class0ÀÏ È®·ü: : "+ x5);
             print("class1ÀÏ È®·ü: "+ x6);
 
-        text1.text = $"°´Ã¼ Á¸ÀçÈ®·ü {x4}";
+        text1.text = $"°´Ã¼ Á¸Àç {x4}";
         text2.text = $"class0 È®·ü: {x5}";
         text3.text = $"class1È®·ü: {x6}";
 
+        
 
         //////
 
@@ -131,6 +176,8 @@ public class Prediction : MonoBehaviour
 
         //       }
     }
+
+
     private static Texture2D GetTextureFromCamera(Camera mCamera)
     {
         UnityEngine.Rect rect = new UnityEngine.Rect(0, 0, mCamera.pixelWidth, mCamera.pixelHeight);
