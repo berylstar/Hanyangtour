@@ -20,6 +20,16 @@ public class Prediction : MonoBehaviour
     public Text text2;
     public Text text3;
     public Text text4;
+
+    public static float x0;
+    public static float x1;
+    public static float x2;
+    public static float x3;
+    public static float x4;
+    public static float x5;
+    public static float x6;
+
+
     [System.Serializable]
     public struct Predictions
     {
@@ -87,10 +97,22 @@ public class Prediction : MonoBehaviour
     }
     public void GETS()
         {
-        
-          //  if (Input.GetKeyDown(KeyCode.Space))
-          //  {
-            print("GETS!");
+
+        StartCoroutine(Gettt());
+
+        //////
+
+
+
+        //predictions.SetPrediction(OutputY);
+
+        //       }
+    }
+
+    IEnumerator Gettt() {
+        //  if (Input.GetKeyDown(KeyCode.Space))
+        //  {
+        print("GETS!");
         //texture = Projection.jjj;
         //RenderTexture render = CameraM.GetComponent<Camera>().targetTexture;
         //print(render);
@@ -107,76 +129,74 @@ public class Prediction : MonoBehaviour
 
                 //Cv2.Resize(frame, frame, new Size(640, 640));
                 //texture = OpenCvSharp.Unity.MatToTexture(frame);
-                texture= ScaleTexture(texture, 640, 640);
+                texture = ScaleTexture(texture, 640, 640);
                 print(texture);
                 text4.text = $"º¯È¯¼º°ø";
             }
             catch (Exception ex)
             {
-                
+
                 text4.text = $"{ex.ToString()}";
-            } 
+            }
             ///
 
 
-        //    text4.text = $"ÃÔ¿µ¼º°ø";
+            //    text4.text = $"ÃÔ¿µ¼º°ø";
         }
         catch (Exception)
         {
             text4.text = $"ÃÔ¿µ½ÇÆÐ";
 
-        }    
-        
-       // texture=GetTextureFromCamera(CameraM.GetComponent<Camera>());
-            var inputX = new Tensor(texture, 3);
-                Tensor OutputY = _engine.Execute(inputX).PeekOutput();
-                inputX.Dispose();
+        }
 
-            /////// ¼±ÅÃ°ú ÁýÁß
-        
+        // texture=GetTextureFromCamera(CameraM.GetComponent<Camera>());
+        var inputX = new Tensor(texture, 3);
+        Tensor OutputY = _engine.Execute(inputX).PeekOutput();
+        inputX.Dispose();
+
+        /////// ¼±ÅÃ°ú ÁýÁß
 
 
-        float temp0=0;
+
+        float temp0 = 0;
         int indexofob = -1;
         for (int i = 0; i < 25200; i++)
         {
             float temp1 = (float)OutputY[0, 0, 4, i];
             if (temp0 < temp1)
-            { temp0 = temp1;
+            {
+                temp0 = temp1;
                 indexofob = i;
             }
         }
-        var x0 = OutputY[0, 0, 0, indexofob];
-        var x1 = OutputY[0, 0, 1, indexofob];
-        var x2 = OutputY[0, 0, 2, indexofob];
-        var x3 = OutputY[0, 0, 3, indexofob];
-        var x4 = OutputY[0, 0, 4, indexofob];
-        var x5 = OutputY[0, 0, 5, indexofob];
-        var x6 = OutputY[0, 0, 6, indexofob];
+        x0 = OutputY[0, 0, 0, indexofob];
+        x1 = OutputY[0, 0, 1, indexofob];
+        x2 = OutputY[0, 0, 2, indexofob];
+        x3 = OutputY[0, 0, 3, indexofob];
+        x4 = OutputY[0, 0, 4, indexofob];
+        x5 = OutputY[0, 0, 5, indexofob];
+        x6 = OutputY[0, 0, 6, indexofob];
 
-        print("À§Ä¡ÁÂÇ¥ 1: "+ x0);
-            print("À§Ä¡ÁÂÇ¥ 2: "+ x1);
-            print("À§Ä¡ÁÂÇ¥ 3: "+ x2);
-            print("À§Ä¡ÁÂÇ¥ 4: "+ x3);
-            print("°´Ã¼ ¿©ºÎ È®·ü: "+ x4);
-            print("class0ÀÏ È®·ü: : "+ x5);
-            print("class1ÀÏ È®·ü: "+ x6);
+        print("À§Ä¡ÁÂÇ¥ 1: " + x0);
+        print("À§Ä¡ÁÂÇ¥ 2: " + x1);
+        print("À§Ä¡ÁÂÇ¥ 3: " + x2);
+        print("À§Ä¡ÁÂÇ¥ 4: " + x3);
+        print("°´Ã¼ ¿©ºÎ È®·ü: " + x4);
+        print("class0ÀÏ È®·ü: : " + x5);
+        print("class1ÀÏ È®·ü: " + x6);
 
         text1.text = $"°´Ã¼ Á¸Àç {x4}";
         text2.text = $"class0 È®·ü: {x5}";
         text3.text = $"class1È®·ü: {x6}";
 
-        
-
-        //////
 
 
 
-        //predictions.SetPrediction(OutputY);
 
-        //       }
+
+
+        yield return 0;
     }
-
 
     private static Texture2D GetTextureFromCamera(Camera mCamera)
     {
