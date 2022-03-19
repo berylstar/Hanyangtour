@@ -9,17 +9,20 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
 
 using UnityEngine.XR.ARFoundation;
+
 public class Prediction : MonoBehaviour
 {
     public Texture2D texture;
     public NNModel modelAsset;
-    public GameObject CameraM;
     private Model _runtimeModel;
     private IWorker _engine;
-    public Text text1;
-    public Text text2;
-    public Text text3;
-    public Text text4;
+
+    public GameObject CameraM;
+
+    public Text text1;      //°´Ã¼ Å½Áö ¿Ï·á ÅØ½ºÆ®
+    public Text text2;      //class0 È®·ü ÅØ½ºÆ®
+    public Text text3;      //class1 È®·ü ÅØ½ºÆ®
+    public Text text4;      //ÀÛµ¿ ·Î±× ÅØ½ºÆ®
 
     public static float x0;
     public static float x1;
@@ -33,7 +36,6 @@ public class Prediction : MonoBehaviour
     [System.Serializable]
     public struct Predictions
     {
-
         public int predictedValue;
         public float[] predicted;
 
@@ -45,36 +47,31 @@ public class Prediction : MonoBehaviour
             Debug.Log(predictedValue);
         }
     }
-    // Start is called before the first frame update
 
     public Predictions predictions;
+
     void Start()
     {
-        
-        
         _runtimeModel = ModelLoader.Load(modelAsset);
 
-          try
-          {
-              _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.CPU);
-            print( $"{WorkerFactory.Device.CPU}");
+        try
+        {
+            _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.CPU);
+            print($"{WorkerFactory.Device.CPU}");
             text4.text = $"{WorkerFactory.Device.CPU}";
-
         }
-          catch (System.Exception)
-          {
-              print("¿£Áø¸ê¸Á");
+        catch (System.Exception)
+        {
+            print("¿£Áø¸ê¸Á");
             text4.text = "¿£Áø¸ê¸Á";
-              _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.GPU);
-          }
-        
-        predictions = new Predictions();
+            _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.GPU);
+        }
 
+        predictions = new Predictions();
     }
     
-    void Update() {
-
-      
+    void Update()
+    {
     
     }
 
@@ -84,6 +81,7 @@ public class Prediction : MonoBehaviour
         Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
         float incX = (1.0f / (float)targetWidth);
         float incY = (1.0f / (float)targetHeight);
+
         for (int i = 0; i < result.height; ++i)
         {
             for (int j = 0; j < result.width; ++j)
@@ -92,21 +90,16 @@ public class Prediction : MonoBehaviour
                 result.SetPixel(j, i, newColor);
             }
         }
+
         result.Apply();
         return result;
     }
-    public void GETS()
-        {
 
+    public void GETS()
+    {
         StartCoroutine(Gettt());
 
-        //////
-
-
-
         //predictions.SetPrediction(OutputY);
-
-        //       }
     }
 
     IEnumerator Gettt() {
@@ -120,33 +113,29 @@ public class Prediction : MonoBehaviour
         try
         {
             // texture = GetTextureFromCamera(CameraM.GetComponent<Camera>());
-            ///
 
             texture = ScreenCapture.CaptureScreenshotAsTexture();
+
             try
             {
                 //  Mat frame = OpenCvSharp.Unity.TextureToMat(texture);
-
                 //Cv2.Resize(frame, frame, new Size(640, 640));
                 //texture = OpenCvSharp.Unity.MatToTexture(frame);
+
                 texture = ScaleTexture(texture, 640, 640);
                 print(texture);
                 text4.text = $"º¯È¯¼º°ø";
             }
             catch (Exception ex)
             {
-
                 text4.text = $"{ex.ToString()}";
             }
-            ///
-
 
             //    text4.text = $"ÃÔ¿µ¼º°ø";
         }
         catch (Exception)
         {
             text4.text = $"ÃÔ¿µ½ÇÆÐ";
-
         }
 
         // texture=GetTextureFromCamera(CameraM.GetComponent<Camera>());
@@ -154,9 +143,8 @@ public class Prediction : MonoBehaviour
         Tensor OutputY = _engine.Execute(inputX).PeekOutput();
         inputX.Dispose();
 
+
         /////// ¼±ÅÃ°ú ÁýÁß
-
-
 
         float temp0 = 0;
         int indexofob = -1;
@@ -189,12 +177,6 @@ public class Prediction : MonoBehaviour
         text2.text = $"class0 È®·ü: {x5}";
         text3.text = $"class1È®·ü: {x6}";
 
-
-
-
-
-
-
         yield return 0;
     }
 
@@ -225,6 +207,4 @@ public class Prediction : MonoBehaviour
     {
         _engine.Dispose();
     }
-
-
 }

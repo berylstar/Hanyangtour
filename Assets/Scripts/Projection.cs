@@ -6,7 +6,7 @@ using System.Linq;
 using OpenCvSharp;
 public class Projection : MonoBehaviour
 {
-     WebCamTexture _webCamTexture;
+    WebCamTexture _webCamTexture;
     public static Texture2D jjj;
     void Start()
     {
