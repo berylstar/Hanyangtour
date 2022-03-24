@@ -28,6 +28,12 @@ public class Prediction : MonoBehaviour
     public static float x4;
     public static float x5;
     public static float x6;
+    public static float x7;
+    public static float x8;
+    public static float x9;
+    public static float x10;
+    public static float x11;
+ 
 
 
     [System.Serializable]
@@ -173,9 +179,15 @@ public class Prediction : MonoBehaviour
         x1 = OutputY[0, 0, 1, indexofob];
         x2 = OutputY[0, 0, 2, indexofob];
         x3 = OutputY[0, 0, 3, indexofob];
-        x4 = OutputY[0, 0, 4, indexofob];
-        x5 = OutputY[0, 0, 5, indexofob];
-        x6 = OutputY[0, 0, 6, indexofob];
+        x4 = OutputY[0, 0, 4, indexofob];   //존재확률
+        x5 = OutputY[0, 0, 5, indexofob];   // 하냥이
+        x6 = OutputY[0, 0, 6, indexofob];   //본관
+        x7 = OutputY[0, 0, 7, indexofob];   //컨퍼런스홀
+        x8 = OutputY[0, 0, 8, indexofob];   //셔틀콕
+        x9 = OutputY[0, 0, 9, indexofob];   //아고라
+        x10 = OutputY[0, 0, 10, indexofob]; //학정
+        x11 = OutputY[0, 0, 11, indexofob]; //복지관
+        //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
 
         print("위치좌표 1: " + x0);
         print("위치좌표 2: " + x1);
