@@ -36,8 +36,9 @@ public class Prediction : MonoBehaviour
     public static float x9;
     public static float x10;
     public static float x11;
- 
 
+    public static int Class;
+    public static bool isExist;
 
     [System.Serializable]
     public struct Predictions
@@ -159,29 +160,58 @@ public class Prediction : MonoBehaviour
 
         float temp0 = 0;
         int indexofob = -1;
+        int indexofob1 = -1;
+        int indexofob2= -1;
         for (int i = 0; i < 25200; i++)
         {
             float temp1 = (float)OutputY[0, 0, 4, i];
             if (temp0 < temp1)
             {
                 temp0 = temp1;
-                indexofob = i;
+
+                indexofob2 = indexofob1;    //ÀüÀü Á¸ÀçÈ®·üÀÇ ÃÖ´ñ°ªÀÇ ÀÎµ¦½º ÀúÀå
+                indexofob1 = indexofob;     // Á÷Àü Á¸ÀçÈ®·üÀÇ ÃÖ´ñ°ªÀÇ ÀÎµ¦½º ÀúÀå
+                indexofob = i;              //ÇöÀç Á¸ÀçÈ®·üÀÇ ÃÖ´ñ°ªÀÇ ÀÎµ¦½º ÀúÀå
             }
         }
         x0 = OutputY[0, 0, 0, indexofob];
         x1 = OutputY[0, 0, 1, indexofob];
         x2 = OutputY[0, 0, 2, indexofob];
         x3 = OutputY[0, 0, 3, indexofob];
-        x4 = OutputY[0, 0, 4, indexofob];   //Á¸ÀçÈ®·ü
-        x5 = OutputY[0, 0, 5, indexofob];   // ÇÏ³ÉÀÌ
-        x6 = OutputY[0, 0, 6, indexofob];   //º»°ü
-        x7 = OutputY[0, 0, 7, indexofob];   //ÄÁÆÛ·±½ºÈ¦
-        x8 = OutputY[0, 0, 8, indexofob];   //¼ÅÆ²ÄÛ
-        x9 = OutputY[0, 0, 9, indexofob];   //¾Æ°í¶ó
-        x10 = OutputY[0, 0, 10, indexofob]; //ÇÐÁ¤
-        x11 = OutputY[0, 0, 11, indexofob]; //º¹Áö°ü
-        //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
+        x4 = (OutputY[0, 0, 4, indexofob] + OutputY[0, 0, 4, indexofob1] + OutputY[0, 0, 4, indexofob2])/3;                           //Á¸ÀçÈ®·ü        ¿©±â¼­ºÎÅÍ À¯»ç NMS ±¸Çö
+        x5 = (OutputY[0, 0, 5, indexofob] + OutputY[0, 0, 5, indexofob1] + OutputY[0, 0, 5, indexofob2]) / 3;  // ÇÏ³ÉÀÌ
+        x6 = (OutputY[0, 0, 6, indexofob] + OutputY[0, 0, 6, indexofob1] + OutputY[0, 0, 6, indexofob2]) / 3;   //º»°ü
+        x7 = (OutputY[0, 0, 7, indexofob] + OutputY[0, 0, 7, indexofob1] + OutputY[0, 0, 7, indexofob2]) / 3;   //ÄÁÆÛ·±½ºÈ¦
+        x8 = (OutputY[0, 0, 8, indexofob] + OutputY[0, 0, 8, indexofob1] + OutputY[0, 0, 8, indexofob2]) / 3;  //¼ÅÆ²ÄÛ
+        x9 = (OutputY[0, 0, 9, indexofob] + OutputY[0, 0, 9, indexofob1] + OutputY[0, 0, 9, indexofob2]) / 3;  //¾Æ°í¶ó
+        x10 = (OutputY[0, 0, 10, indexofob] + OutputY[0, 0, 10, indexofob1] + OutputY[0, 0, 10, indexofob2]) / 3; //ÇÐÁ¤
+        x11 = (OutputY[0, 0, 11, indexofob] + OutputY[0, 0, 11, indexofob1] + OutputY[0, 0, 11, indexofob2]) / 3; //º¹Áö°ü
+                                                                                                                  //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
 
+        if (x4 > 0.1)
+        {
+            isExist = true;
+            float[] temp_float = { x5, x6, x7, x8, x9, x10, x11 };
+            float tempindex = -1;
+            int tempindex2 = -1;
+            for (int iy = 0; iy < 7; iy++)
+            {
+                if (tempindex < temp_float[iy])
+                {
+                    tempindex = temp_float[iy];
+                    tempindex2 = iy;
+                }
+
+            }
+
+
+            Class = tempindex2;
+
+        }
+        else {
+            isExist = false;
+            Class = -1;
+        }
         print("À§Ä¡ÁÂÇ¥ 1: " + x0);
         print("À§Ä¡ÁÂÇ¥ 2: " + x1);
         print("À§Ä¡ÁÂÇ¥ 3: " + x2);
@@ -191,8 +221,8 @@ public class Prediction : MonoBehaviour
         print("class1ÀÏ È®·ü: " + x6);
 
         text1.text = $"°´Ã¼ Á¸Àç {x4}";
-        text2.text = $"class0 È®·ü: {x5}";
-        text3.text = $"class1È®·ü: {x6}";
+        text2.text = $"Á¸Àç?: {isExist}";
+        text3.text = $"class¹»±î: {Class}";
 
         yield return 0;
     }
