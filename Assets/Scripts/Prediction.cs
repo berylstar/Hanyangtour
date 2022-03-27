@@ -78,7 +78,11 @@ public class Prediction : MonoBehaviour
     
     void Update()
     {
-    
+        if (Input.GetKeyDown(KeyCode.S)) {
+
+            GETS();
+        
+        }
     }
 
     // Update is called once per frame
@@ -120,7 +124,8 @@ public class Prediction : MonoBehaviour
         {
             // texture = GetTextureFromCamera(CameraM.GetComponent<Camera>());
 
-            texture = ScreenCapture.CaptureScreenshotAsTexture();
+            //  texture = ScreenCapture.CaptureScreenshotAsTexture();
+           texture= GetTextureFromCamera(Camera.main);
 
             try
             {
@@ -209,9 +214,9 @@ public class Prediction : MonoBehaviour
 
         mCamera.targetTexture = null;
         RenderTexture.active = null;
-        Mat frame = OpenCvSharp.Unity.TextureToMat(screenShot);
-        Cv2.Resize(frame, frame, new Size(640, 640));
-        screenShot = OpenCvSharp.Unity.MatToTexture(frame);
+      //  Mat frame = OpenCvSharp.Unity.TextureToMat(screenShot);
+       // Cv2.Resize(frame, frame, new Size(640, 640));
+        //screenShot = OpenCvSharp.Unity.MatToTexture(frame);
         return screenShot;
     }
 
