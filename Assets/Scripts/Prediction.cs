@@ -36,7 +36,7 @@ public class Prediction : MonoBehaviour
     public static float x10;    //ÇÐÁ¤
     public static float x11;    //º¹Áö°ü
 
-    public static int ClassNum;
+    public static int classNum;
     public static bool isExist;
 
     [System.Serializable]
@@ -155,7 +155,7 @@ public class Prediction : MonoBehaviour
         float temp0 = 0;
         int indexofob = -1;
         int indexofob1 = -1;
-        int indexofob2= -1;
+        int indexofob2 = -1;
 
         for (int i = 0; i < 25200; i++)
         {
@@ -199,12 +199,12 @@ public class Prediction : MonoBehaviour
                     tempindex2 = iy;
                 }
             }
-            ClassNum = tempindex2;
+            classNum = tempindex2;
         }
         else
         {
             isExist = false;
-            ClassNum = -1;
+            classNum = -1;
         }
 
         print("À§Ä¡ÁÂÇ¥ 1: " + x0);
@@ -212,12 +212,21 @@ public class Prediction : MonoBehaviour
         print("À§Ä¡ÁÂÇ¥ 3: " + x2);
         print("À§Ä¡ÁÂÇ¥ 4: " + x3);
         print("°´Ã¼ ¿©ºÎ È®·ü: " + x4);
-        print("class0ÀÏ È®·ü: : " + x5);
-        print("class1ÀÏ È®·ü: " + x6);
+        //print("class0ÀÏ È®·ü: : " + x5);
+        //print("class1ÀÏ È®·ü: " + x6);
 
-        text1.text = $"°´Ã¼ Á¸Àç {x4}";
-        text2.text = $"Á¸Àç?: {isExist}";
-        text3.text = $"class¹»±î: {ClassNum}";
+        text1.text = $"°´Ã¼ Á¸Àç : {x4}";
+        text2.text = $"Á¸Àç? : {isExist}";
+        //text3.text = $"class¹»±î : {classNum}";
+
+        if (classNum == 0) { text3.text = $"class¹»±î : ÇÏ³ÉÀÌ"; }
+        else if (classNum == 1) { text3.text = $"class¹»±î : º»°ü"; }
+        else if (classNum == 2) { text3.text = $"class¹»±î : ÄÁÆÛ·±½ºÈ¦"; }
+        else if (classNum == 3) { text3.text = $"class¹»±î : ¼ÅÆ²ÄÛ"; }
+        else if (classNum == 4) { text3.text = $"class¹»±î : ¾Æ°í¶ó"; }
+        else if (classNum == 5) { text3.text = $"class¹»±î : ÇÐÁ¤"; }
+        else if (classNum == 6) { text3.text = $"class¹»±î : º¹Áö°ü"; }
+        else { text3.text = $"class¹»±î : ¸ô·ç"; }
 
         yield return 0;
     }
