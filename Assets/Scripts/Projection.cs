@@ -8,6 +8,7 @@ public class Projection : MonoBehaviour
 {
     WebCamTexture _webCamTexture;
     public static Texture2D jjj;
+
     void Start()
     {
         WebCamDevice[] devices = WebCamTexture.devices;

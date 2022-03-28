@@ -7,7 +7,6 @@ using System;
 using OpenCvSharp;
 using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
-
 using UnityEngine.XR.ARFoundation;
 
 public class Prediction : MonoBehaviour
@@ -17,7 +16,7 @@ public class Prediction : MonoBehaviour
     private Model _runtimeModel;
     private IWorker _engine;
 
-    public GameObject CameraM;
+    //public GameObject CameraM;
 
     public Text text1;      //객체 존재 확률
     public Text text2;      //객체 존재 T/F
@@ -28,16 +27,16 @@ public class Prediction : MonoBehaviour
     public static float x1;
     public static float x2;
     public static float x3;
-    public static float x4;
-    public static float x5;
-    public static float x6;
-    public static float x7;
-    public static float x8;
-    public static float x9;
-    public static float x10;
-    public static float x11;
+    public static float x4;     //존재확률
+    public static float x5;     //하냥이
+    public static float x6;     //본관
+    public static float x7;     //컨퍼런스홀
+    public static float x8;     //셔틀콕
+    public static float x9;     //아고라
+    public static float x10;    //학정
+    public static float x11;    //복지관
 
-    public static int Class;
+    public static int ClassNum;
     public static bool isExist;
 
     [System.Serializable]
@@ -49,7 +48,6 @@ public class Prediction : MonoBehaviour
         public void SetPrediction(Tensor t)
         {
             predicted = t.AsFloats();
-            
             predictedValue = System.Array.IndexOf(predicted, predicted.Max());
             Debug.Log(predictedValue);
         }
@@ -80,9 +78,7 @@ public class Prediction : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.S)) {
-
             GETS();
-        
         }
     }
 
@@ -109,14 +105,12 @@ public class Prediction : MonoBehaviour
     public void GETS()
     {
         StartCoroutine(Gettt());
-
         //predictions.SetPrediction(OutputY);
     }
 
     IEnumerator Gettt() {
-        //  if (Input.GetKeyDown(KeyCode.Space))
-        //  {
         print("GETS!");
+        //if (Input.GetKeyDown(KeyCode.Space)){
         //texture = Projection.jjj;
         //RenderTexture render = CameraM.GetComponent<Camera>().targetTexture;
         //print(render);
@@ -124,13 +118,13 @@ public class Prediction : MonoBehaviour
         try
         {
             // texture = GetTextureFromCamera(CameraM.GetComponent<Camera>());
-
             //  texture = ScreenCapture.CaptureScreenshotAsTexture();
+
            texture= GetTextureFromCamera(Camera.main);
 
             try
             {
-                //  Mat frame = OpenCvSharp.Unity.TextureToMat(texture);
+                //Mat frame = OpenCvSharp.Unity.TextureToMat(texture);
                 //Cv2.Resize(frame, frame, new Size(640, 640));
                 //texture = OpenCvSharp.Unity.MatToTexture(frame);
 
@@ -156,12 +150,13 @@ public class Prediction : MonoBehaviour
         inputX.Dispose();
 
 
-        /////// 선택과 집중
+                            //선택과 집중
 
         float temp0 = 0;
         int indexofob = -1;
         int indexofob1 = -1;
         int indexofob2= -1;
+
         for (int i = 0; i < 25200; i++)
         {
             float temp1 = (float)OutputY[0, 0, 4, i];
@@ -174,19 +169,20 @@ public class Prediction : MonoBehaviour
                 indexofob = i;              //현재 존재확률의 최댓값의 인덱스 저장
             }
         }
+
         x0 = OutputY[0, 0, 0, indexofob];
         x1 = OutputY[0, 0, 1, indexofob];
         x2 = OutputY[0, 0, 2, indexofob];
         x3 = OutputY[0, 0, 3, indexofob];
-        x4 = (OutputY[0, 0, 4, indexofob] + OutputY[0, 0, 4, indexofob1] + OutputY[0, 0, 4, indexofob2])/3;                           //존재확률        여기서부터 유사 NMS 구현
-        x5 = (OutputY[0, 0, 5, indexofob] + OutputY[0, 0, 5, indexofob1] + OutputY[0, 0, 5, indexofob2]) / 3;  // 하냥이
-        x6 = (OutputY[0, 0, 6, indexofob] + OutputY[0, 0, 6, indexofob1] + OutputY[0, 0, 6, indexofob2]) / 3;   //본관
-        x7 = (OutputY[0, 0, 7, indexofob] + OutputY[0, 0, 7, indexofob1] + OutputY[0, 0, 7, indexofob2]) / 3;   //컨퍼런스홀
-        x8 = (OutputY[0, 0, 8, indexofob] + OutputY[0, 0, 8, indexofob1] + OutputY[0, 0, 8, indexofob2]) / 3;  //셔틀콕
-        x9 = (OutputY[0, 0, 9, indexofob] + OutputY[0, 0, 9, indexofob1] + OutputY[0, 0, 9, indexofob2]) / 3;  //아고라
-        x10 = (OutputY[0, 0, 10, indexofob] + OutputY[0, 0, 10, indexofob1] + OutputY[0, 0, 10, indexofob2]) / 3; //학정
-        x11 = (OutputY[0, 0, 11, indexofob] + OutputY[0, 0, 11, indexofob1] + OutputY[0, 0, 11, indexofob2]) / 3; //복지관
-                                                                                                                  //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
+        x4 = (OutputY[0, 0, 4, indexofob] + OutputY[0, 0, 4, indexofob1] + OutputY[0, 0, 4, indexofob2]) / 3;         //여기서부터 유사 NMS 구현
+        x5 = (OutputY[0, 0, 5, indexofob] + OutputY[0, 0, 5, indexofob1] + OutputY[0, 0, 5, indexofob2]) / 3;
+        x6 = (OutputY[0, 0, 6, indexofob] + OutputY[0, 0, 6, indexofob1] + OutputY[0, 0, 6, indexofob2]) / 3;
+        x7 = (OutputY[0, 0, 7, indexofob] + OutputY[0, 0, 7, indexofob1] + OutputY[0, 0, 7, indexofob2]) / 3;
+        x8 = (OutputY[0, 0, 8, indexofob] + OutputY[0, 0, 8, indexofob1] + OutputY[0, 0, 8, indexofob2]) / 3;
+        x9 = (OutputY[0, 0, 9, indexofob] + OutputY[0, 0, 9, indexofob1] + OutputY[0, 0, 9, indexofob2]) / 3;
+        x10 = (OutputY[0, 0, 10, indexofob] + OutputY[0, 0, 10, indexofob1] + OutputY[0, 0, 10, indexofob2]) / 3;
+        x11 = (OutputY[0, 0, 11, indexofob] + OutputY[0, 0, 11, indexofob1] + OutputY[0, 0, 11, indexofob2]) / 3;
+                                                                                                                    //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
 
         if (x4 > 0.1)
         {
@@ -194,6 +190,7 @@ public class Prediction : MonoBehaviour
             float[] temp_float = { x5, x6, x7, x8, x9, x10, x11 };
             float tempindex = -1;
             int tempindex2 = -1;
+
             for (int iy = 0; iy < 7; iy++)
             {
                 if (tempindex < temp_float[iy])
@@ -201,17 +198,15 @@ public class Prediction : MonoBehaviour
                     tempindex = temp_float[iy];
                     tempindex2 = iy;
                 }
-
             }
-
-
-            Class = tempindex2;
-
+            ClassNum = tempindex2;
         }
-        else {
+        else
+        {
             isExist = false;
-            Class = -1;
+            ClassNum = -1;
         }
+
         print("위치좌표 1: " + x0);
         print("위치좌표 2: " + x1);
         print("위치좌표 3: " + x2);
@@ -222,7 +217,7 @@ public class Prediction : MonoBehaviour
 
         text1.text = $"객체 존재 {x4}";
         text2.text = $"존재?: {isExist}";
-        text3.text = $"class뭘까: {Class}";
+        text3.text = $"class뭘까: {ClassNum}";
 
         yield return 0;
     }
@@ -241,13 +236,13 @@ public class Prediction : MonoBehaviour
         screenShot.ReadPixels(rect, 0, 0);
         screenShot.Apply();
 
-
         mCamera.targetTexture = null;
         RenderTexture.active = null;
-      //  Mat frame = OpenCvSharp.Unity.TextureToMat(screenShot);
-       // Cv2.Resize(frame, frame, new Size(640, 640));
-        //screenShot = OpenCvSharp.Unity.MatToTexture(frame);
         return screenShot;
+
+        //Mat frame = OpenCvSharp.Unity.TextureToMat(screenShot);
+        //Cv2.Resize(frame, frame, new Size(640, 640));
+        //screenShot = OpenCvSharp.Unity.MatToTexture(frame);
     }
 
     private void OnDestroy()
