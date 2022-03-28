@@ -19,9 +19,9 @@ public class Prediction : MonoBehaviour
 
     public GameObject CameraM;
 
-    public Text text1;      //객체 탐지 완료 텍스트
-    public Text text2;      //class0 확률 텍스트
-    public Text text3;      //class1 확률 텍스트
+    public Text text1;      //객체 존재 확률
+    public Text text2;      //객체 존재 T/F
+    public Text text3;      //어떤 객체인가
     public Text text4;      //작동 로그 텍스트
 
     public static float x0;
