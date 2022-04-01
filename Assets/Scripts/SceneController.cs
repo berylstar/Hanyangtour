@@ -5,40 +5,75 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int nummm;
+
+    public GameObject objjjj;
+
+    public GameObject sceneController;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        Prediction pred = objjjj.GetComponent<Prediction>();
+        nummm = pred.classNum;
     }
 
-    public void ButtonStart()
+
+    public void ButtonToMain()
+    {
+        SceneManager.LoadScene("MainScene");
+
+        var objs = FindObjectsOfType<SceneController>();
+        if(objs.Length == 1)
+        {
+            DontDestroyOnLoad(sceneController);
+        }
+        else
+        {
+            Destroy(sceneController);
+        }
+
+        Prediction pred = objjjj.GetComponent<Prediction>();
+        nummm = pred.classNum;
+    }
+
+    public void ButtonToRule()
     {
         SceneManager.LoadScene("RuleScene");
+
+        var objs = FindObjectsOfType<SceneController>();
+        if (objs.Length == 1)
+        {
+            DontDestroyOnLoad(sceneController);
+        }
+        else
+        {
+            Destroy(sceneController);
+        }
     }
 
-    public void ButtonExit()
-    {
-        Application.Quit();
-    }
-
-    public void ButtonNext()
-    {
-        SceneManager.LoadScene("MainScene");
-    }
-
-    public void ButtonStamp()
+    public void ButtonToStamp()
     {
         SceneManager.LoadScene("StampScene");
+
+        var objs = FindObjectsOfType<SceneController>();
+        if (objs.Length == 1)
+        {
+            DontDestroyOnLoad(sceneController);
+        }
+        else
+        {
+            Destroy(sceneController);
+        }
     }
 
-    public void ButtonBack()
+    public void ButtonToExit()
     {
-        SceneManager.LoadScene("MainScene");
+        Application.Quit();
     }
 }

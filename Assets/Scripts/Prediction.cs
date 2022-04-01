@@ -36,7 +36,7 @@ public class Prediction : MonoBehaviour
     public static float x10;    //학정
     public static float x11;    //복지관
 
-    public static int classNum;
+    public int classNum;
     public static bool isExist;
 
     [System.Serializable]
@@ -148,9 +148,10 @@ public class Prediction : MonoBehaviour
         var inputX = new Tensor(texture, 3);
         Tensor OutputY = _engine.Execute(inputX).PeekOutput();
         inputX.Dispose();
+        //predictions.SetPrediction(OutputY);
 
 
-                            //선택과 집중
+        //선택과 집중
 
         float temp0 = 0;
         int indexofob = -1;
@@ -199,6 +200,7 @@ public class Prediction : MonoBehaviour
                     tempindex2 = iy;
                 }
             }
+
             classNum = tempindex2;
         }
         else
