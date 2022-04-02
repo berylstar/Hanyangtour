@@ -197,16 +197,15 @@ public class Prediction : MonoBehaviour
                 if (tempindex < temp_float[iy])
                 {
                     tempindex = temp_float[iy];
-                    tempindex2 = iy;
+                    tempindex2 = iy + 1;
                 }
             }
-
             classNum = tempindex2;
         }
         else
         {
             isExist = false;
-            classNum = -1;
+            classNum = 0;
         }
 
         print("À§Ä¡ÁÂÇ¥ 1: " + x0);
@@ -221,13 +220,13 @@ public class Prediction : MonoBehaviour
         text2.text = $"Á¸Àç? : {isExist}";
         //text3.text = $"class¹»±î : {classNum}";
 
-        if (classNum == 0) { text3.text = $"class¹»±î : ÇÏ³ÉÀÌ"; }
-        else if (classNum == 1) { text3.text = $"class¹»±î : º»°ü"; }
-        else if (classNum == 2) { text3.text = $"class¹»±î : ÄÁÆÛ·±½ºÈ¦"; }
-        else if (classNum == 3) { text3.text = $"class¹»±î : ¼ÅÆ²ÄÛ"; }
-        else if (classNum == 4) { text3.text = $"class¹»±î : ¾Æ°í¶ó"; }
-        else if (classNum == 5) { text3.text = $"class¹»±î : ÇÐÁ¤"; }
-        else if (classNum == 6) { text3.text = $"class¹»±î : º¹Áö°ü"; }
+        if (classNum == 1) { text3.text = $"class¹»±î : ÇÏ³ÉÀÌ"; }
+        else if (classNum == 2) { text3.text = $"class¹»±î : º»°ü"; }
+        else if (classNum == 3) { text3.text = $"class¹»±î : ÄÁÆÛ·±½ºÈ¦"; }
+        else if (classNum == 4) { text3.text = $"class¹»±î : ¼ÅÆ²ÄÛ"; }
+        else if (classNum == 5) { text3.text = $"class¹»±î : ¾Æ°í¶ó"; }
+        else if (classNum == 6) { text3.text = $"class¹»±î : ÇÐÁ¤"; }
+        else if (classNum == 7) { text3.text = $"class¹»±î : º¹Áö°ü"; }
         else { text3.text = $"class¹»±î : ¸ô·ç"; }
 
         yield return 0;

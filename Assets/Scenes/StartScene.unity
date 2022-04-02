@@ -911,7 +911,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 867827184}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: ButtonToMain
+        m_MethodName: ButtonToRule
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 1971083889}
   - component: {fileID: 1971083888}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

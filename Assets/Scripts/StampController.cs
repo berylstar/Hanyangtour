@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class StampController : MonoBehaviour
 {
-    public Prediction prediction;
+    public GameObject objjj;
+
+    public int numm;
 
     public GameObject check01;
     public GameObject check02;
@@ -16,12 +18,34 @@ public class StampController : MonoBehaviour
 
     void Start()
     {
-        
-    }
 
+    }   
 
     void Update()
     {
-        check01.SetActive(true);
+
+    }
+
+    public void ButtonToStamp()
+    {
+        this.gameObject.SetActive(true);
+        objjj.SetActive(false);
+
+        Prediction pred = objjj.GetComponent<Prediction>();
+        numm = pred.classNum;
+
+        if(numm == 1) { check01.SetActive(true); }
+        else if(numm == 2) { check02.SetActive(true); }
+        else if(numm == 3) { check03.SetActive(true); }
+        else if (numm == 4) { check04.SetActive(true); }
+        else if (numm == 5) { check05.SetActive(true); }
+        else if (numm == 6) { check06.SetActive(true); }
+        else if (numm == 7) { check07.SetActive(true); }
+    }
+
+    public void ButtonToBack()
+    {
+        this.gameObject.SetActive(false);
+        objjj.SetActive(true);
     }
 }
