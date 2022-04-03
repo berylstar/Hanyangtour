@@ -82,7 +82,6 @@ public class Prediction : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
     {
         Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
@@ -105,7 +104,6 @@ public class Prediction : MonoBehaviour
     public void GETS()
     {
         StartCoroutine(Gettt());
-        //predictions.SetPrediction(OutputY);
     }
 
     IEnumerator Gettt() {
@@ -115,10 +113,11 @@ public class Prediction : MonoBehaviour
         //RenderTexture render = CameraM.GetComponent<Camera>().targetTexture;
         //print(render);
         //texture = new Texture2D(render.width, render.height);
+
         try
         {
-            // texture = GetTextureFromCamera(CameraM.GetComponent<Camera>());
-            //  texture = ScreenCapture.CaptureScreenshotAsTexture();
+            //texture = GetTextureFromCamera(CameraM.GetComponent<Camera>());
+            //texture = ScreenCapture.CaptureScreenshotAsTexture();
 
            texture= GetTextureFromCamera(Camera.main);
 
@@ -137,7 +136,7 @@ public class Prediction : MonoBehaviour
                 text4.text = $"{ex.ToString()}";
             }
 
-            //    text4.text = $"촬영성공";
+            //text4.text = $"촬영성공";
         }
         catch (Exception)
         {
@@ -145,6 +144,7 @@ public class Prediction : MonoBehaviour
         }
 
         // texture=GetTextureFromCamera(CameraM.GetComponent<Camera>());
+
         var inputX = new Tensor(texture, 3);
         Tensor OutputY = _engine.Execute(inputX).PeekOutput();
         inputX.Dispose();
@@ -175,7 +175,9 @@ public class Prediction : MonoBehaviour
         x1 = OutputY[0, 0, 1, indexofob];
         x2 = OutputY[0, 0, 2, indexofob];
         x3 = OutputY[0, 0, 3, indexofob];
-        x4 = (OutputY[0, 0, 4, indexofob] + OutputY[0, 0, 4, indexofob1] + OutputY[0, 0, 4, indexofob2]) / 3;         //여기서부터 유사 NMS 구현
+
+        //여기서부터 유사 NMS 구현
+        x4 = (OutputY[0, 0, 4, indexofob] + OutputY[0, 0, 4, indexofob1] + OutputY[0, 0, 4, indexofob2]) / 3;
         x5 = (OutputY[0, 0, 5, indexofob] + OutputY[0, 0, 5, indexofob1] + OutputY[0, 0, 5, indexofob2]) / 3;
         x6 = (OutputY[0, 0, 6, indexofob] + OutputY[0, 0, 6, indexofob1] + OutputY[0, 0, 6, indexofob2]) / 3;
         x7 = (OutputY[0, 0, 7, indexofob] + OutputY[0, 0, 7, indexofob1] + OutputY[0, 0, 7, indexofob2]) / 3;
@@ -183,7 +185,7 @@ public class Prediction : MonoBehaviour
         x9 = (OutputY[0, 0, 9, indexofob] + OutputY[0, 0, 9, indexofob1] + OutputY[0, 0, 9, indexofob2]) / 3;
         x10 = (OutputY[0, 0, 10, indexofob] + OutputY[0, 0, 10, indexofob1] + OutputY[0, 0, 10, indexofob2]) / 3;
         x11 = (OutputY[0, 0, 11, indexofob] + OutputY[0, 0, 11, indexofob1] + OutputY[0, 0, 11, indexofob2]) / 3;
-                                                                                                                    //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
+        //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
 
         if (x4 > 0.1)
         {
@@ -197,7 +199,7 @@ public class Prediction : MonoBehaviour
                 if (tempindex < temp_float[iy])
                 {
                     tempindex = temp_float[iy];
-                    tempindex2 = iy + 1;
+                    tempindex2 = iy + 1;        //+1 해서 0 일때 인식하는걸 방지
                 }
             }
             classNum = tempindex2;
@@ -218,7 +220,6 @@ public class Prediction : MonoBehaviour
 
         text1.text = $"객체 존재 : {x4}";
         text2.text = $"존재? : {isExist}";
-        //text3.text = $"class뭘까 : {classNum}";
 
         if (classNum == 1) { text3.text = $"class뭘까 : 하냥이"; }
         else if (classNum == 2) { text3.text = $"class뭘까 : 본관"; }

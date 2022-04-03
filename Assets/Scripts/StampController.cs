@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class StampController : MonoBehaviour
 {
-    public GameObject objjj;
+    public GameObject predictionObj;
 
-    public int numm;
+    public int stampNumm;
 
-    public GameObject check01;
-    public GameObject check02;
-    public GameObject check03;
-    public GameObject check04;
-    public GameObject check05;
-    public GameObject check06;
-    public GameObject check07;
+    public GameObject check01;  //하냥이
+    public GameObject check02;  //본관
+    public GameObject check03;  //컨퍼런스홀
+    public GameObject check04;  //셔틀콕
+    public GameObject check05;  //아고라
+    public GameObject check06;  //학정
+    public GameObject check07;  //복지관
 
     void Start()
     {
@@ -29,23 +29,24 @@ public class StampController : MonoBehaviour
     public void ButtonToStamp()
     {
         this.gameObject.SetActive(true);
-        objjj.SetActive(false);
+        predictionObj.SetActive(false);
 
-        Prediction pred = objjj.GetComponent<Prediction>();
-        numm = pred.classNum;
+        Prediction pred = predictionObj.GetComponent<Prediction>();
+        stampNumm = pred.classNum;
 
-        if(numm == 1) { check01.SetActive(true); }
-        else if(numm == 2) { check02.SetActive(true); }
-        else if(numm == 3) { check03.SetActive(true); }
-        else if (numm == 4) { check04.SetActive(true); }
-        else if (numm == 5) { check05.SetActive(true); }
-        else if (numm == 6) { check06.SetActive(true); }
-        else if (numm == 7) { check07.SetActive(true); }
+        //스탬프 키고끄기
+        if(stampNumm == 1) { check01.SetActive(true); }
+        else if(stampNumm == 2) { check02.SetActive(true); }
+        else if(stampNumm == 3) { check03.SetActive(true); }
+        else if (stampNumm == 4) { check04.SetActive(true); }
+        else if (stampNumm == 5) { check05.SetActive(true); }
+        else if (stampNumm == 6) { check06.SetActive(true); }
+        else if (stampNumm == 7) { check07.SetActive(true); }
     }
 
     public void ButtonToBack()
     {
         this.gameObject.SetActive(false);
-        objjj.SetActive(true);
+        predictionObj.SetActive(true);
     }
 }

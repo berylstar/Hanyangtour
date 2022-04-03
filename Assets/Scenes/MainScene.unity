@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 1204646729}
+  m_Camera: {fileID: 0}
 --- !u!4 &580356831
 Transform:
   m_ObjectHideFlags: 0
@@ -3266,8 +3266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697715aaaa6e6fa4ab02018c32bcae1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objjj: {fileID: 171477953}
-  numm: 0
+  predictionObj: {fileID: 171477953}
+  stampNumm: 0
   check01: {fileID: 6270192014451418846}
   check02: {fileID: 6270192016126077223}
   check03: {fileID: 6270192015558714633}
