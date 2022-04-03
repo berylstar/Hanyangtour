@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StampController : MonoBehaviour
 {
-    public GameObject predictionObj;
+    public GameObject canvasMain;
+    public GameObject canvasStamp;
 
-    public int stampNumm;
+    public int stampNum;
 
     public GameObject check01;  //하냥이
     public GameObject check02;  //본관
@@ -23,30 +24,32 @@ public class StampController : MonoBehaviour
 
     void Update()
     {
+        Prediction pred = canvasMain.GetComponent<Prediction>();
+        stampNum = pred.classNum;
 
+        StampOnOff();
     }
 
     public void ButtonToStamp()
     {
-        this.gameObject.SetActive(true);
-        predictionObj.SetActive(false);
-
-        Prediction pred = predictionObj.GetComponent<Prediction>();
-        stampNumm = pred.classNum;
-
-        //스탬프 키고끄기
-        if(stampNumm == 1) { check01.SetActive(true); }
-        else if(stampNumm == 2) { check02.SetActive(true); }
-        else if(stampNumm == 3) { check03.SetActive(true); }
-        else if (stampNumm == 4) { check04.SetActive(true); }
-        else if (stampNumm == 5) { check05.SetActive(true); }
-        else if (stampNumm == 6) { check06.SetActive(true); }
-        else if (stampNumm == 7) { check07.SetActive(true); }
+        canvasStamp.SetActive(true);
+        canvasMain.SetActive(false);        
     }
 
     public void ButtonToBack()
     {
-        this.gameObject.SetActive(false);
-        predictionObj.SetActive(true);
+        canvasStamp.SetActive(false);
+        canvasMain.SetActive(true);
+    }
+
+    public void StampOnOff()
+    {
+        if (stampNum == 1) { check01.SetActive(true); }
+        else if (stampNum == 2) { check02.SetActive(true); }
+        else if (stampNum == 3) { check03.SetActive(true); }
+        else if (stampNum == 4) { check04.SetActive(true); }
+        else if (stampNum == 5) { check05.SetActive(true); }
+        else if (stampNum == 6) { check06.SetActive(true); }
+        else if (stampNum == 7) { check07.SetActive(true); }
     }
 }

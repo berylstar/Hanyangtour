@@ -39,6 +39,7 @@ public class Prediction : MonoBehaviour
     public int classNum;
     public static bool isExist;
 
+    /*
     [System.Serializable]
     public struct Predictions
     {
@@ -52,8 +53,9 @@ public class Prediction : MonoBehaviour
             Debug.Log(predictedValue);
         }
     }
+    */
 
-    public Predictions predictions;
+    //public Predictions predictions;
 
     void Start()
     {
@@ -72,7 +74,7 @@ public class Prediction : MonoBehaviour
             _engine = WorkerFactory.CreateWorker(_runtimeModel, WorkerFactory.Device.GPU);
         }
 
-        predictions = new Predictions();
+        //predictions = new Predictions();
     }
     
     void Update()
