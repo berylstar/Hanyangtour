@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StampController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class StampController : MonoBehaviour
 
     public int stampNum;
 
+    [Header ("StampCheck")]
     public GameObject check01;  //하냥이
     public GameObject check02;  //본관
     public GameObject check03;  //컨퍼런스홀
@@ -16,6 +18,9 @@ public class StampController : MonoBehaviour
     public GameObject check05;  //아고라
     public GameObject check06;  //학정
     public GameObject check07;  //복지관
+
+    private bool flag1, flag2, flag3, flag4, flag5, flag6, flag7;
+    private bool flag8 = true;
 
     void Start()
     {
@@ -27,7 +32,7 @@ public class StampController : MonoBehaviour
         Prediction pred = canvasMain.GetComponent<Prediction>();
         stampNum = pred.classNum;
 
-        StampOnOff();
+        StampOn();
     }
 
     public void ButtonToStamp()
@@ -42,14 +47,20 @@ public class StampController : MonoBehaviour
         canvasMain.SetActive(true);
     }
 
-    public void StampOnOff()
+    public void StampOn()
     {
-        if (stampNum == 1) { check01.SetActive(true); }
-        else if (stampNum == 2) { check02.SetActive(true); }
-        else if (stampNum == 3) { check03.SetActive(true); }
-        else if (stampNum == 4) { check04.SetActive(true); }
-        else if (stampNum == 5) { check05.SetActive(true); }
-        else if (stampNum == 6) { check06.SetActive(true); }
-        else if (stampNum == 7) { check07.SetActive(true); }
+        if (stampNum == 1) { check01.SetActive(true); flag1 = true; }
+        else if (stampNum == 2) { check02.SetActive(true); flag2 = true; }
+        else if (stampNum == 3) { check03.SetActive(true); flag3 = true; }
+        else if (stampNum == 4) { check04.SetActive(true); flag4 = true; }
+        else if (stampNum == 5) { check05.SetActive(true); flag5 = true; }
+        else if (stampNum == 6) { check06.SetActive(true); flag6 = true; }
+        else if (stampNum == 7) { check07.SetActive(true); flag7 = true; }
+
+        if(flag1 == true && flag2 == true && flag3 == true && flag4 == true && flag5 == true && flag6 == true && flag7 == true && flag8 == true)
+        {
+            print("ALL DETECTED");
+            flag8 = false;
+        }
     }
 }

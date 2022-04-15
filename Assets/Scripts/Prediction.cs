@@ -22,6 +22,8 @@ public class Prediction : MonoBehaviour
     public Text text2;      //객체 존재 T/F
     public Text text3;      //어떤 객체인가
     public Text text4;      //작동 로그 텍스트
+                            //이것들은 나중엔 없애도 됨
+    public Text text_WhatIsThis;
 
     public static float x0;
     public static float x1;
@@ -231,6 +233,15 @@ public class Prediction : MonoBehaviour
         else if (classNum == 6) { text3.text = $"class뭘까 : 학정"; }
         else if (classNum == 7) { text3.text = $"class뭘까 : 복지관"; }
         else { text3.text = $"class뭘까 : 몰루"; }
+
+        if (classNum == 1) { text_WhatIsThis.text = $"하냥이"; }
+        else if (classNum == 2) { text_WhatIsThis.text = $"본관"; }
+        else if (classNum == 3) { text_WhatIsThis.text = $"컨퍼런스홀"; }
+        else if (classNum == 4) { text_WhatIsThis.text = $"셔틀콕"; }
+        else if (classNum == 5) { text_WhatIsThis.text = $"아고라"; }
+        else if (classNum == 6) { text_WhatIsThis.text = $"학정"; }
+        else if (classNum == 7) { text_WhatIsThis.text = $"복지관"; }
+        else { text_WhatIsThis.text = $"몰루"; }
 
         yield return 0;
     }
