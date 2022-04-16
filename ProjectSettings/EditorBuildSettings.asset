@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: ccc916fcd0cc68849a8b85a71b341c8b
   - enabled: 1
     path: Assets/Scenes/EndingScene.unity
-    guid: c866da0aef3fb1b48ab2ef9b204ffb5c
+    guid: 86800f7b101ece1468d23ce0924334db
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f21275eae5af54d4a93667ea8e592cb5, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b00e5c4470c6722439483285f40afea9, type: 2}

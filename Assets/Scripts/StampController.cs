@@ -8,6 +8,8 @@ public class StampController : MonoBehaviour
     public GameObject canvasMain;
     public GameObject canvasStamp;
 
+    public GameObject buttonEnding;
+
     private int stampNum;
 
     [Header ("StampCheck")]
@@ -62,7 +64,7 @@ public class StampController : MonoBehaviour
             print("ALL DETECTED");
             flag8 = false;
 
-            //buttonEnding.SetActive(true);
+            buttonEnding.SetActive(true);
         }
     }
 }
