@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public void ButtonToIntro()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
     public void ButtonToMain()
     {
         SceneManager.LoadScene("MainScene");
