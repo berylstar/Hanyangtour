@@ -33,5 +33,6 @@ public class InfoController : MonoBehaviour
         else if (stampNum == 5) { text_info.text = $"학교 정문 입구부터\n볼수있는 아고라 !\nERICA 캠퍼스의\n상징 중 하나지.\n이쁜 야경 앞에서\n사진 한번 찍어보자"; }        //아고라
         else if (stampNum == 6) { text_info.text = $"열심히 공부할 수 있는 학술 정보관 !\n열람실은 24시간 개방하고 있어.\n1층의 로봇 무인 카페도 즐겨보자"; }              //학정
         else if (stampNum == 7) { text_info.text = $"편의점, 학생식당\n은행, 우체국, 서점\n카페, 푸드코트\n동아리방까지\n없는게 없는\n복지관이야"; }
+        else { text_info.text = $"???"; } //건물을 제대로\n인식하지 못했어..\n다시 찍어줘 !
     }
 }

@@ -12,6 +12,11 @@ public class StampController : MonoBehaviour
 
     private int stampNum;
 
+    [Header("Effect Sound")]
+    public AudioSource SoundMap;
+    public AudioSource SoundBack;
+    public AudioSource SoundFin;
+
     [Header ("StampCheck")]
     public GameObject check01;  //하냥이
     public GameObject check02;  //본관
@@ -40,13 +45,15 @@ public class StampController : MonoBehaviour
     public void ButtonToStamp()
     {
         canvasStamp.SetActive(true);
-        canvasMain.SetActive(false);        
+        canvasMain.SetActive(false);
+        SoundMap.Play();
     }
 
     public void ButtonToBack()
     {
         canvasStamp.SetActive(false);
         canvasMain.SetActive(true);
+        SoundBack.Play();
     }
 
     private void StampOn()
@@ -65,6 +72,7 @@ public class StampController : MonoBehaviour
             flag8 = false;
 
             buttonEnding.SetActive(true);
+            SoundFin.Play();
         }
     }
 }

@@ -41,6 +41,8 @@ public class Prediction : MonoBehaviour
     public int classNum;
     public static bool isExist;
 
+    public AudioSource SoundCamera;
+
     /*
     [System.Serializable]
     public struct Predictions
@@ -108,6 +110,7 @@ public class Prediction : MonoBehaviour
     public void GETS()
     {
         StartCoroutine(Gettt());
+        SoundCamera.Play();
     }
 
     IEnumerator Gettt() {
@@ -241,7 +244,7 @@ public class Prediction : MonoBehaviour
         else if (classNum == 5) { text_WhatIsThis.text = $"아고라"; }
         else if (classNum == 6) { text_WhatIsThis.text = $"학정"; }
         else if (classNum == 7) { text_WhatIsThis.text = $"복지관"; }
-        else { text_WhatIsThis.text = $"몰루"; }
+        else { text_WhatIsThis.text = $"???"; }
 
         yield return 0;
     }

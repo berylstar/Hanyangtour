@@ -123,6 +123,133 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &46590382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46590384}
+  - component: {fileID: 46590383}
+  m_Layer: 0
+  m_Name: buttonSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &46590383
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46590382}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &46590384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46590382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 909726438}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &171477953
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37230a23e526c3149925468269d2fb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundButton: {fileID: 0}
 --- !u!114 &171477955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,14 +438,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uD55C\uC591\uB300 ERICA \uCEA0\uD37C\uC2A4\uC758 \uBE44\uBC00\uC9C0\uB3C4\uAC00
-    \uBC1C\uACAC\uB418\uC5C8\uB2E4\uB294 \uC18C\uC2DD !\n\uAC74\uBB3C\uC744 \uCC0D\uACE0
-    \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790 !\n\n               \uBC84\uD2BC\uC744
-    \uD130\uCE58\uD574\uC11C \uCE74\uBA54\uB77C\uB85C       \uD45C\uC2DC\uB41C \uAC74\uBB3C\uC744
-    \uCC0D\uC5B4\uBCF4\uC790 !\n\uAC74\uBB3C\uC774 \uC778\uC2DD\uB418\uBA74 \uADF8
-    \uC815\uBCF4\uB97C \uC54C\uB824\uC904\uAC8C\n\n\uADF8\uB9AC\uACE0          \uBC84\uD2BC\uC73C\uB85C
-    \uC9C0\uB3C4\uC640 \uC2A4\uD0EC\uD504\uB97C \uD655\uC778\uD560 \uC218 \uC788\uC5B4\n\n\uADF8\uB7FC
-    \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790 ~!"
+  m_Text: "\uD55C\uC591\uB300 ERICA \uCEA0\uD37C\uC2A4\uC5D0 \uC628 \uAC78 \uD658\uC601\uD574
+    !\n\uCEA0\uD37C\uC2A4\uB97C \uB3CC\uC544\uB2E4\uB2C8\uBA70 \uAC74\uBB3C\uC744
+    \uCC0D\uACE0 \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790 !\n\n              
+    \uBC84\uD2BC\uC744 \uD130\uCE58\uD574\uC11C \uCE74\uBA54\uB77C\uB85C       \uD45C\uC2DC\uB41C
+    \uAC74\uBB3C\uC744 \uCC0D\uC5B4\uBCF4\uC790 !\n\uAC74\uBB3C\uC774 \uC81C\uB300\uB85C
+    \uC778\uC2DD\uB418\uBA74 \uC2A4\uD0EC\uD504\uB97C \uCC0D\uC5B4\uC904\uAC8C.\n\n\uADF8\uB9AC\uACE0         
+    \uBC84\uD2BC\uC73C\uB85C \uC9C0\uB3C4\uC640 \uC2A4\uD0EC\uD504\uB97C \uD655\uC778\uD560
+    \uC218 \uC788\uC5B4.\n\n\uADF8\uB7FC \uC5B4\uC11C \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790
+    ~!"
 --- !u!222 &227900825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -394,7 +523,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277108042}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!4 &277108045
 Transform:
   m_ObjectHideFlags: 0
@@ -672,6 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37230a23e526c3149925468269d2fb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundButton: {fileID: 46590383}
 --- !u!4 &909726438
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +812,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 46590384}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1103,7 +1234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 224, y: 101.00007}
+  m_AnchoredPosition: {x: 224, y: 113}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850919139
