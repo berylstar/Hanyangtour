@@ -36,4 +36,10 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("EndingScene");
         SoundButton.Play();
     }
+
+    public void ButtonToFace()
+    {
+        SceneManager.LoadScene("FaceScene");
+        SoundButton.Play();
+    }
 }

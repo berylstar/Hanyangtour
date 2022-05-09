@@ -591,4 +591,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090cdd80a49da604586420dec3918949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceMaterial: {fileID: 0}
+  faceMaterial: {fileID: 2100000, guid: f7934a39d7fd6834da086f2c3ca73e3c, type: 2}
