@@ -832,12 +832,12 @@ GameObject:
   - component: {fileID: 1076444406}
   - component: {fileID: 1076444405}
   m_Layer: 5
-  m_Name: Button_go (1)
+  m_Name: Button_face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1076444404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1061,7 +1061,7 @@ GameObject:
   - component: {fileID: 1351711473}
   - component: {fileID: 1351711472}
   m_Layer: 5
-  m_Name: Button_go
+  m_Name: Button_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
