@@ -194,7 +194,7 @@ public class Prediction : MonoBehaviour
         x11 = (OutputY[0, 0, 11, indexofob] + OutputY[0, 0, 11, indexofob1] + OutputY[0, 0, 11, indexofob2]) / 3;
         //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
 
-        if (x4 > 0.1)
+        if (x4 > 0.05)
         {
             isExist = true;
             float[] temp_float = { x5, x6, x7, x8, x9, x10, x11 };

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
+    path: Assets/Scenes/IntroScene.unity
     guid: 00ea194611836174ba8e7d9614e1b8c1
   - enabled: 1
     path: Assets/Scenes/RuleScene.unity
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndingScene.unity
     guid: 86800f7b101ece1468d23ce0924334db
+  - enabled: 1
+    path: Assets/Scenes/FaceScene.unity
+    guid: 1d5b435e3d8896e43ab347f7b4bced22
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f21275eae5af54d4a93667ea8e592cb5, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b00e5c4470c6722439483285f40afea9, type: 2}

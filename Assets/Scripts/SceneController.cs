@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour
 
     public void ButtonToIntro()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("IntroScene");
         SoundButton.Play();
     }
 
