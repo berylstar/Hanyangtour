@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/EndingScene.unity
     guid: 86800f7b101ece1468d23ce0924334db
   - enabled: 0
-    path: Assets/Scenes/FaceScene.unity
+    path: Assets/Scenes/FaceScene_test.unity
     guid: 1d5b435e3d8896e43ab347f7b4bced22
   - enabled: 1
-    path: Assets/Scenes/FaceScene2.unity
+    path: Assets/Scenes/FaceScene.unity
     guid: 8b0ddfdf400132c4b99a8fb49464d57f
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f21275eae5af54d4a93667ea8e592cb5, type: 2}

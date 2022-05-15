@@ -421,7 +421,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f51c619aeec11124a9cfba36294664b8, type: 2}
+  - {fileID: 2100000, guid: 35bd980c8f2234e3d8b640e25a677d65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872594947}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4aab259b5c35443f9b1d0c15e2ad434, type: 3}
   m_Name: 
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872594947}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d87bd45cfc214ce48ce8b882225dd11, type: 3}
   m_Name: 
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 1798429210}
   - component: {fileID: 1798429209}
   - component: {fileID: 1798429211}
-  - component: {fileID: 1798429214}
+  - component: {fileID: 1798429212}
   - component: {fileID: 1798429213}
   m_Layer: 0
   m_Name: AR Session Origin
@@ -752,15 +752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FacePrefab: {fileID: 872594947}
   m_MaximumFaceCount: 1
---- !u!81 &1798429213
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798429208}
-  m_Enabled: 1
---- !u!114 &1798429214
+--- !u!114 &1798429212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -769,10 +761,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1798429208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34fcfd1f9dc159942ac003da4c9a0bc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 090cdd80a49da604586420dec3918949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nosePrefab: {fileID: 8596699165152533583, guid: efe5eae6b896fbc47a2d8dc2f49f8b20, type: 3}
+  faceMaterial: {fileID: 2100000, guid: f7934a39d7fd6834da086f2c3ca73e3c, type: 2}
+--- !u!81 &1798429213
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798429208}
+  m_Enabled: 1
 --- !u!114 &3829298750151244368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3829298750151244373
 RectTransform:
   m_ObjectHideFlags: 0
