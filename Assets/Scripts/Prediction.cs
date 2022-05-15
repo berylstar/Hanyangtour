@@ -242,7 +242,7 @@ public class Prediction : MonoBehaviour
         else if (classNum == 3) { text_WhatIsThis.text = $"컨퍼런스홀"; }
         else if (classNum == 4) { text_WhatIsThis.text = $"셔틀콕"; }
         else if (classNum == 5) { text_WhatIsThis.text = $"아고라"; }
-        else if (classNum == 6) { text_WhatIsThis.text = $"학정"; }
+        else if (classNum == 6) { text_WhatIsThis.text = $"학술정보관"; }
         else if (classNum == 7) { text_WhatIsThis.text = $"복지관"; }
         else { text_WhatIsThis.text = $"???"; }
 

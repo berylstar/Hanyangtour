@@ -6,6 +6,8 @@ public class HintController : MonoBehaviour
 {
     public GameObject img1, img2, img3, img4, img5, img6, img7;
 
+    public AudioSource soundc;
+
     public void ButtonPin1()
     {
         img1.SetActive(true);
@@ -15,6 +17,7 @@ public class HintController : MonoBehaviour
         img5.SetActive(false);
         img6.SetActive(false);
         img7.SetActive(false);
+        soundc.Play();
     }
 
     public void ButtonPin2()
@@ -26,6 +29,7 @@ public class HintController : MonoBehaviour
         img5.SetActive(false);
         img6.SetActive(false);
         img7.SetActive(false);
+        soundc.Play();
     }
 
     public void ButtonPin3()
@@ -37,6 +41,7 @@ public class HintController : MonoBehaviour
         img5.SetActive(false);
         img6.SetActive(false);
         img7.SetActive(false);
+        soundc.Play();
     }
 
     public void ButtonPin4()
@@ -48,6 +53,7 @@ public class HintController : MonoBehaviour
         img5.SetActive(false);
         img6.SetActive(false);
         img7.SetActive(false);
+        soundc.Play();
     }
 
     public void ButtonPin5()
@@ -59,6 +65,7 @@ public class HintController : MonoBehaviour
         img5.SetActive(true);
         img6.SetActive(false);
         img7.SetActive(false);
+        soundc.Play();
     }
 
     public void ButtonPin6()
@@ -70,6 +77,7 @@ public class HintController : MonoBehaviour
         img5.SetActive(false);
         img6.SetActive(true);
         img7.SetActive(false);
+        soundc.Play();
     }
 
     public void ButtonPin7()
@@ -81,5 +89,6 @@ public class HintController : MonoBehaviour
         img5.SetActive(false);
         img6.SetActive(false);
         img7.SetActive(true);
+        soundc.Play();
     }
 }

@@ -427,12 +427,13 @@ MonoBehaviour:
   m_Text: "\uD55C\uC591\uB300 ERICA \uCEA0\uD37C\uC2A4\uC5D0 \uC628 \uAC78 \uD658\uC601\uD574
     !\n\uCEA0\uD37C\uC2A4\uB97C \uB3CC\uC544\uB2E4\uB2C8\uBA70 \uAC74\uBB3C\uC744
     \uCC0D\uACE0 \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790 !\n\n              
-    \uBC84\uD2BC\uC744 \uD130\uCE58\uD574\uC11C \uCE74\uBA54\uB77C\uB85C       \uD45C\uC2DC\uB41C
-    \uAC74\uBB3C\uC744 \uCC0D\uC5B4\uBCF4\uC790 !\n\uAC74\uBB3C\uC774 \uC81C\uB300\uB85C
-    \uC778\uC2DD\uB418\uBA74 \uC2A4\uD0EC\uD504\uB97C \uCC0D\uC5B4\uC904\uAC8C.\n\n\uADF8\uB9AC\uACE0         
-    \uBC84\uD2BC\uC73C\uB85C \uC9C0\uB3C4\uC640 \uC2A4\uD0EC\uD504\uB97C \uD655\uC778\uD560
-    \uC218 \uC788\uC5B4.\n\n\uADF8\uB7FC \uC5B4\uC11C \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790
-    ~!"
+    \uBC84\uD2BC\uC744 \uD130\uCE58\uD574\uC11C \uCE74\uBA54\uB77C\uB85C \uAC74\uBB3C\uC744
+    \uCC0D\uC744 \uC218 \uC788\uACE0,\n\n          \uBC84\uD2BC\uC73C\uB85C \uC9C0\uB3C4\uC640
+    \uC2A4\uD0EC\uD504\uB97C \uD655\uC778\uD560 \uC218 \uC788\uC5B4.\n\n\uC774\uB54C
+    \uC9C0\uB3C4\uC5D0\uC11C       \uD45C\uC2DC\uB41C \uAC74\uBB3C\uC744 \uCC0D\uC5B4\uBCF4\uC790.\n\uC774
+    \uBC84\uD2BC\uC744 \uB204\uB974\uBA74 \uD78C\uD2B8\uB97C \uBCF4\uC5EC\uC904\uAC8C.\n\uAC74\uBB3C\uC774
+    \uC81C\uB300\uB85C \uC778\uC2DD\uB418\uBA74 \uC2A4\uD0EC\uD504\uB97C \uCC0D\uC5B4\uC904\uAC8C.\n\n\uADF8\uB7FC
+    \uC5B4\uC11C \uC2A4\uD0EC\uD504\uB97C \uBAA8\uC544\uBCF4\uC790 ~!"
 --- !u!222 &227900825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -717,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -835.99994, y: -189.99994}
+  m_AnchoredPosition: {x: -1053, y: 53.999954}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807058874
@@ -1030,7 +1031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1019.99994, y: 128.00003}
+  m_AnchoredPosition: {x: -1004, y: 260}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1318099391
@@ -1317,7 +1318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 224, y: 113}
+  m_AnchoredPosition: {x: -589, y: -131}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850919139
