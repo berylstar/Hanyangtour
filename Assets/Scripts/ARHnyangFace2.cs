@@ -22,7 +22,6 @@ public class ARHnyangFace2 : MonoBehaviour
         sessionOrigin = GetComponent<ARSessionOrigin>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ARCoreFaceSubsystem subsystem = (ARCoreFaceSubsystem)arFaceManager.subsystem;
@@ -55,7 +54,8 @@ public class ARHnyangFace2 : MonoBehaviour
         Texture2D texture = ScreenCapture.CaptureScreenshotAsTexture();
 
         // do something with texture
-        string albumName = "HnyangTOUR";
+        string albumName = "HanyangTOUR";
+
         NativeGallery.SaveImageToGallery(texture, albumName, fileName, (success, path) =>
         {
             Debug.Log(success);
