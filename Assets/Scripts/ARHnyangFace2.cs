@@ -55,7 +55,7 @@ public class ARHnyangFace2 : MonoBehaviour
         Texture2D texture = ScreenCapture.CaptureScreenshotAsTexture();
 
         // do something with texture
-        string albumName = "BRUNCH";
+        string albumName = "HnyangTOUR";
         NativeGallery.SaveImageToGallery(texture, albumName, fileName, (success, path) =>
         {
             Debug.Log(success);
