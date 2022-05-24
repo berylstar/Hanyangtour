@@ -183,7 +183,7 @@ public class Prediction : MonoBehaviour
         x2 = OutputY[0, 0, 2, indexofob];
         x3 = OutputY[0, 0, 3, indexofob];
 
-        //여기서부터 유사 NMS 구현
+        //NMS 구현
         x4 = (OutputY[0, 0, 4, indexofob] + OutputY[0, 0, 4, indexofob1] + OutputY[0, 0, 4, indexofob2]) / 3;
         x5 = (OutputY[0, 0, 5, indexofob] + OutputY[0, 0, 5, indexofob1] + OutputY[0, 0, 5, indexofob2]) / 3;
         x6 = (OutputY[0, 0, 6, indexofob] + OutputY[0, 0, 6, indexofob1] + OutputY[0, 0, 6, indexofob2]) / 3;
@@ -192,7 +192,7 @@ public class Prediction : MonoBehaviour
         x9 = (OutputY[0, 0, 9, indexofob] + OutputY[0, 0, 9, indexofob1] + OutputY[0, 0, 9, indexofob2]) / 3;
         x10 = (OutputY[0, 0, 10, indexofob] + OutputY[0, 0, 10, indexofob1] + OutputY[0, 0, 10, indexofob2]) / 3;
         x11 = (OutputY[0, 0, 11, indexofob] + OutputY[0, 0, 11, indexofob1] + OutputY[0, 0, 11, indexofob2]) / 3;
-        //['hanayang','mainhall','conference','shuttle','erica','library','welfare']
+        //['hanayang','mainhall','conference','shuttle','agora','library','welfare']
 
         if (x4 > 0.009)
         {

@@ -91,4 +91,15 @@ public class HintController : MonoBehaviour
         img7.SetActive(true);
         soundc.Play();
     }
+
+    public void HintOff()
+    {
+        img1.SetActive(false);
+        img2.SetActive(false);
+        img3.SetActive(false);
+        img4.SetActive(false);
+        img5.SetActive(false);
+        img6.SetActive(false);
+        img7.SetActive(false);
+    }
 }
